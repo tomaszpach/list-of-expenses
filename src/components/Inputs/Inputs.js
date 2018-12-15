@@ -9,12 +9,6 @@ class Inputs extends Component {
         expanse: {}
     };
 
-
-    componentDidMount() {
-        this.props.addExpense({title: 'test', value: 20, id: 1544882981034});
-        this.props.deleteExpense(1544882981030)
-    }
-
     updateInput(type, e) {
         const value = e.target.value;
         this.setState({
