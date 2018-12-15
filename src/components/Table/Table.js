@@ -1,6 +1,17 @@
 import React from 'react';
 
-const Table = () => {
+const Table = ({transactions, eurPln}) => {
+    const items = transactions.map((item, index) => {
+        const eur = (item.value / eurPln).toFixed(2);
+        return (
+            <tr key={index}>
+                <td>{item.title}</td>
+                <td>{item.value}</td>
+                <td>{eur}</td>
+                <td>Delete</td>
+            </tr>
+        );
+    });
     return (
         <table>
             <tbody>
@@ -10,24 +21,7 @@ const Table = () => {
                 <th>Amount(EUR)</th>
                 <th>Options</th>
             </tr>
-            <tr>
-                <td>New book about Rust</td>
-                <td>100</td>
-                <td>22.82</td>
-                <td>Delete</td>
-            </tr>
-            <tr>
-                <td>Snacks for a football match</td>
-                <td>20</td>
-                <td>4.56</td>
-                <td>Delete</td>
-            </tr>
-            <tr>
-                <td>Bus ticket</td>
-                <td>2.55</td>
-                <td>0.58</td>
-                <td>Delete</td>
-            </tr>
+            {items}
             </tbody>
         </table>
     );
