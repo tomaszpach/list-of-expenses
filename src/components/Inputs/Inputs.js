@@ -35,7 +35,6 @@ class Inputs extends Component {
                            placeholder={this.state.placeholder} onChange={(e) => this.updateInput('title', e)}/>
                 </label>
                 <label>
-                    {/* Block at most two digits after the decimal */}
                     <span>Amount (in PLN):</span>
                     <input step=".01" type="number" name="amount" placeholder="up to 2 numbers after the decimal"
                            onChange={(e) => this.updateInput('value', e)}/>
