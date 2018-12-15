@@ -34,6 +34,12 @@ const rootReducer = (state = initState, action) => {
                 transactions: state.transactions.filter(element => element.id !== action.id)
             };
 
+        case 'UPDATE_CURRENCY':
+            return {
+                ...state,
+                eurPln: 4.412
+            };
+
         default:
             return state;
     }
