@@ -1,0 +1,20 @@
+table {
+  width: 100%;
+  margin-bottom: 20px;
+
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        background-color: #cbcbcb;
+      }
+
+      &:first-child {
+        background-color: #ababab;
+      }
+
+      th, td {
+        padding: 5px;
+      }
+    }
+  }
+}

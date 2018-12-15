@@ -19,7 +19,7 @@ body {
   border-bottom: none; }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0; }
+  margin: 0; }
 
 h3 {
   font-size: 1.2em; }
@@ -29,5 +29,26 @@ h4 {
 
 strong {
   color: #434d57; }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px; }
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px; }
+
+table {
+  width: 100%;
+  margin-bottom: 20px; }
+  table tbody tr:nth-child(odd) {
+    background-color: #cbcbcb; }
+  table tbody tr:first-child {
+    background-color: #ababab; }
+  table tbody tr th, table tbody tr td {
+    padding: 5px; }
 
 /*# sourceMappingURL=App.css.map */

@@ -15,17 +15,17 @@ class App extends Component {
                 <form>
                     <label>
                         Title of transaction:
-                        <input type="text" name="name" />
+                        <input type="text" name="title" />
                     </label>
                     <label>
                         Amount (in PLN):
-                        <input type="text" name="name" />
+                        <input type="text" name="amount" />
                     </label>
                     <input type="submit" value="Add" />
                 </form>
 
                 {/* Table part */}
-                <table id="customers">
+                <table>
                     <tbody>
                     <tr>
                         <th>Title</th>
