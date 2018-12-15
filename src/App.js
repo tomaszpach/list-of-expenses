@@ -26,6 +26,7 @@ class App extends Component {
 
                 {/* Table part */}
                 <table id="customers">
+                    <tbody>
                     <tr>
                         <th>Title</th>
                         <th>Amount(PLN)</th>
@@ -50,6 +51,7 @@ class App extends Component {
                         <td>0.58</td>
                         <td>Delete</td>
                     </tr>
+                    </tbody>
                 </table>
 
 
