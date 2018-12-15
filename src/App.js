@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+
+import Header from './components/Header/Header';
+
 import './App.css';
 
 class App extends Component {
     render() {
+        const {title, eurPln} = this.props;
         return (
             <div className="App">
                 {/* Header part */}
-                <header>
-                    <h2>{this.props.title}</h2>
-                    <span>1EUR = {this.props.eurPln} PLN</span>
-                </header>
+                <Header title={title} eurPln={eurPln} />
 
                 {/* Inputs parts */}
                 <form>
