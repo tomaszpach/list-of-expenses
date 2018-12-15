@@ -1,14 +1,18 @@
 import React from 'react';
 
-const Table = ({transactions, eurPln}) => {
+const Table = ({transactions, eurPln, onDelete}) => {
     const items = transactions.map((item, index) => {
-        const eur = (item.value / eurPln).toFixed(2);
+        const title = item.title,
+            value = item.value,
+            eur = (item.value / eurPln).toFixed(2),
+            id = item.id;
+
         return (
             <tr key={index}>
-                <td>{item.title}</td>
-                <td>{item.value}</td>
+                <td>{title}</td>
+                <td>{value}</td>
                 <td>{eur}</td>
-                <td>Delete</td>
+                <td className="delete" onClick={() => onDelete(id)}>Delete</td>
             </tr>
         );
     });

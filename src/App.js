@@ -15,7 +15,7 @@ class App extends Component {
             <div className="App">
                 <Header title={title} eurPln={eurPln} />
                 <Inputs />
-                <Table transactions={transactions} eurPln={eurPln}/>
+                <Table onDelete={(id) => this.props.deleteExpense(id)} transactions={transactions} eurPln={eurPln}/>
                 <Summary transactions={transactions} eurPln={eurPln}/>
             </div>
         );
@@ -32,7 +32,9 @@ const mapStateToProps = (reducerState) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-
+        deleteExpense: (id) => {
+            dispatch({type: 'DELETE_EXPENSE', id: id})
+        }
     }
 };
 

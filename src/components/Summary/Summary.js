@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Summary = ({transactions, eurPln}) => {
+    // todo aktualizowanie tego w momencie dodania kolejnej rzeczy do listy
     let sum = 0;
     transactions.forEach(item => {
         return sum = sum + item.value;
