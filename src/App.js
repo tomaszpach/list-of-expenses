@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import './App.css';
 
 class App extends Component {
@@ -7,8 +8,8 @@ class App extends Component {
             <div className="App">
                 {/* Header part */}
                 <header>
-                    <h2>List of expenses</h2>
-                    <span>1EUR = 4,382 PLN</span>
+                    <h2>{this.props.title}</h2>
+                    <span>1EUR = {this.props.eurPln} PLN</span>
                 </header>
 
                 {/* Inputs parts */}
@@ -62,4 +63,17 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = (reducerState) => {
+    return {
+        title: reducerState.title,
+        eurPln: reducerState.eurPln
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
