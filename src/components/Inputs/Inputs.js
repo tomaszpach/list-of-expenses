@@ -46,6 +46,10 @@ class Inputs extends Component {
     }
 }
 
+const mapStateToProps = (reducerState) => {
+    return {}
+};
+
 const mapDispatchToProps = (dispatch) => {
     return {
         addExpense: (expense) => {
@@ -54,4 +58,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapDispatchToProps)(Inputs);
+export default connect(mapStateToProps, mapDispatchToProps)(Inputs);
