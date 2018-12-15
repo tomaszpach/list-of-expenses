@@ -40,6 +40,12 @@ form {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px; }
+  form label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; }
+    form label span, form label input {
+      flex: 1; }
 
 table {
   width: 100%;

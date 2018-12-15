@@ -14,11 +14,11 @@ class App extends Component {
                 {/* Inputs parts */}
                 <form>
                     <label>
-                        Title of transaction:
+                        <span>Title of transaction:</span>
                         <input type="text" name="title" />
                     </label>
                     <label>
-                        Amount (in PLN):
+                        <span>Amount (in PLN):</span>
                         <input type="text" name="amount" />
                     </label>
                     <input type="submit" value="Add" />
