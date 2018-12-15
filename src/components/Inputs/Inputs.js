@@ -5,8 +5,7 @@ class Inputs extends Component {
     state = {
         placeholder: 'Please type title (minimum 5 characters)',
         title: '',
-        value: '',
-        expanse: {}
+        value: ''
     };
 
     updateInput(type, e) {
@@ -20,13 +19,12 @@ class Inputs extends Component {
         e.preventDefault();
         const expense = {
             title: this.state.title,
-            value: this.state.value,
+            value: parseFloat(this.state.value),
             id: Date.now()
         };
 
         this.props.addExpense(expense);
     }
-
 
     render() {
         return (
@@ -39,7 +37,8 @@ class Inputs extends Component {
                 <label>
                     {/* Block at most two digits after the decimal */}
                     <span>Amount (in PLN):</span>
-                    <input step=".01" type="number" name="amount" onChange={(e) => this.updateInput('value', e)}/>
+                    <input step=".01" type="number" name="amount" placeholder="up to 2 numbers after the decimal"
+                           onChange={(e) => this.updateInput('value', e)}/>
                 </label>
                 <input type="submit" value="Add"/>
             </form>
@@ -47,21 +46,12 @@ class Inputs extends Component {
     }
 }
 
-const mapStateToProps = (reducerState) => {
-    return {
-        transactions: reducerState.transactions
-    }
-};
-
 const mapDispatchToProps = (dispatch) => {
     return {
         addExpense: (expense) => {
             dispatch({type: 'ADD_EXPENSE', expense: expense})
-        },
-        deleteExpense: (id) => {
-            dispatch({type: 'DELETE_EXPENSE', id: id})
         }
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Inputs);
+export default connect(mapDispatchToProps)(Inputs);
