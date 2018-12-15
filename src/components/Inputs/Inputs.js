@@ -5,7 +5,7 @@ const Inputs = () => {
         <form>
             <label>
                 <span>Title of transaction:</span>
-                <input type="text" name="title" />
+                <input pattern=".{5}" required type="text" name="title" />
             </label>
             <label>
                 <span>Amount (in PLN):</span>
