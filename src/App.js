@@ -19,7 +19,7 @@ class App extends Component {
                 <Inputs />
                 <Table onDelete={(id) => this.props.deleteExpense(id)} transactions={transactions} eurPln={eurPln}/>
                 <Summary transactions={transactions} eurPln={eurPln}/>
-                <button onClick={() => this.props.updateCurrency()}>change to 4.412</button>
+                <button onClick={() => this.props.updateCurrency()}>change conversion to 4.412</button>
             </div>
         );
     }
