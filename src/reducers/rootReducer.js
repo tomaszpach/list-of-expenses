@@ -37,7 +37,7 @@ const rootReducer = (state = initState, action) => {
         case 'UPDATE_CURRENCY':
             return {
                 ...state,
-                eurPln: 4.412
+                eurPln: action.eurPln
             };
 
         default:

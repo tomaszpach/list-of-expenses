@@ -5,12 +5,28 @@ import Header from './components/Header/Header';
 import Inputs from './components/Inputs/Inputs';
 import Table from './components/Table/Table';
 import Summary from './components/Summary/Summary';
+import Conversion from './components/Conversion/Conversion';
 
 import './App.css';
 
-// todo przygotuj opcje zmiany wartosci EURO
-
 class App extends Component {
+    state = {
+        conversion: ''
+    };
+
+    updateInput(e) {
+        const value = e.target.value;
+
+        this.setState({
+            conversion: value
+        })
+    }
+
+    updateCurrency(e) {
+        e.preventDefault();
+        this.props.updateCurrency(this.state.conversion)
+    }
+
     render() {
         const {title, eurPln, transactions} = this.props;
         return (
@@ -19,7 +35,7 @@ class App extends Component {
                 <Inputs />
                 <Table onDelete={(id) => this.props.deleteExpense(id)} transactions={transactions} eurPln={eurPln}/>
                 <Summary transactions={transactions} eurPln={eurPln}/>
-                <button onClick={() => this.props.updateCurrency()}>change conversion to 4.412</button>
+                <Conversion conversion={this.state.conversion} onChange={(e) => this.updateInput(e)} onSubmit={(ref) => this.updateCurrency(ref)}/>
             </div>
         );
     }
@@ -38,8 +54,8 @@ const mapDispatchToProps = (dispatch) => {
         deleteExpense: (id) => {
             dispatch({type: 'DELETE_EXPENSE', id: id})
         },
-        updateCurrency: (value) => {
-            dispatch({type: 'UPDATE_CURRENCY', value: value})
+        updateCurrency: (eurPln) => {
+            dispatch({type: 'UPDATE_CURRENCY', eurPln: eurPln})
         }
     }
 };
