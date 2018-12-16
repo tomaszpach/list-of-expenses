@@ -62,4 +62,7 @@ table {
       table tbody tr th.delete:hover, table tbody tr td.delete:hover {
         background-color: #ababab; }
 
+.summary {
+  margin-bottom: 20px; }
+
 /*# sourceMappingURL=App.css.map */

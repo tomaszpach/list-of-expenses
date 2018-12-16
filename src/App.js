@@ -35,7 +35,7 @@ class App extends Component {
                 <Inputs />
                 <Table onDelete={(id) => this.props.deleteExpense(id)} transactions={transactions} eurPln={eurPln}/>
                 <Summary transactions={transactions} eurPln={eurPln}/>
-                <Conversion conversion={this.state.conversion} onChange={(e) => this.updateInput(e)} onSubmit={(ref) => this.updateCurrency(ref)}/>
+                <Conversion onChange={(e) => this.updateInput(e)} onSubmit={(ref) => this.updateCurrency(ref)}/>
             </div>
         );
     }
