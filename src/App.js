@@ -32,7 +32,6 @@ class App extends Component {
         return (
             <div className="App">
                 <Header title={title} eurPln={eurPln} />
-                {/* todo czysc inputy po dodaniu wydatku */}
                 {/* todo ustaw focus na pierwszym po dodaniu */}
                 <Inputs />
                 <Table onDelete={(id) => this.props.deleteExpense(id)} transactions={transactions} eurPln={eurPln}/>

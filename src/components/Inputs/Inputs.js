@@ -25,12 +25,17 @@ class Inputs extends Component {
         };
 
         this.props.addExpense(expense);
+        this.setState({
+            title: '',
+            value: ''
+        })
     }
 
     render() {
         return (
             <form onSubmit={(e) => this.handleSubmit(e)}>
                 <Input title="Title of transaction:"
+                       value={this.state.title}
                        pattern=".{5,50}"
                        inputTitle="Minimum 5 characters"
                        type="text" name="title"
@@ -38,6 +43,7 @@ class Inputs extends Component {
                        onChange={(e) => this.updateInput('title', e)}/>
 
                 <Input title="Amount (in PLN):"
+                       value={this.state.value}
                        step=".01"
                        inputTitle="Up to 2 numbers after the decimal"
                        type="number"
