@@ -30,6 +30,29 @@ h4 {
 strong {
   color: #434d57; }
 
+.btn {
+  border: none;
+  background-color: #cbcbcb;
+  cursor: pointer;
+  height: 25px;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 250ms; }
+  .btn:hover {
+    background-color: #909090;
+    color: #f9f9f9;
+    letter-spacing: 2px;
+    font-weight: bold; }
+
+input.default {
+  border: none;
+  border-bottom: 1px solid #cbcbcb;
+  outline: none;
+  transition: all 250ms; }
+  input.default:active, input.default:focus {
+    border-color: #005aff; }
+
 header {
   display: flex;
   align-items: center;

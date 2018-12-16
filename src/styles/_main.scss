@@ -1,10 +1,12 @@
 /* Page styling
 ================================== */
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,700);
+
 html {
   height: 100%;
   background-color: #EEE;
 }
+
 body {
   box-sizing: border-box;
   min-height: 100%;
@@ -15,9 +17,53 @@ body {
   font-size: 1.2em;
   background-color: white;
   border: double 3px #DDD;
-  border-top: none; border-bottom: none;
+  border-top: none;
+  border-bottom: none;
 }
-h1, h2, h3, h4, h5, h6 { margin: 0; }
-h3 { font-size: 1.2em; }
-h4 { font-size: 1em; }
-strong { color: darken(slategrey,20%); }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+strong {
+  color: darken(slategrey, 20%);
+}
+
+.btn {
+  border: none;
+  background-color: #cbcbcb;
+  cursor: pointer;
+  height: 25px;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 250ms;
+
+  &:hover {
+    background-color: #909090;
+    color: #f9f9f9;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+}
+
+input {
+  &.default {
+    border: none;
+    border-bottom: 1px solid #cbcbcb;
+    outline: none;
+    transition: all 250ms;
+
+    &:active, &:focus {
+      border-color: #005aff;
+    }
+  }
+}

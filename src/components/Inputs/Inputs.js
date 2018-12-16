@@ -37,7 +37,7 @@ class Inputs extends Component {
                 <Input title="Amount (in PLN):" step=".01" inputTitle="Up to 2 numbers after the decimal"
                        type="number" name="amount"
                        placeholder="Type amount" onChange={(e) => this.updateInput('value', e)}/>
-                <input type="submit" value="Add"/>
+                <input className="btn" type="submit" value="add expense"/>
             </form>
         );
     }
