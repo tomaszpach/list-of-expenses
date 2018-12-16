@@ -38,6 +38,7 @@ strong {
   border-radius: 2px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  outline: none;
   transition: all 250ms; }
   .btn:hover {
     background-color: #909090;

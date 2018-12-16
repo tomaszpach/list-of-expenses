@@ -28,7 +28,8 @@ class Inputs extends Component {
         this.setState({
             title: '',
             value: ''
-        })
+        });
+        this.nameInput.focus();
     }
 
     render() {
@@ -40,7 +41,10 @@ class Inputs extends Component {
                        inputTitle="Minimum 5 characters"
                        type="text" name="title"
                        placeholder="Please type title (minimum 5 characters)"
-                       onChange={(e) => this.updateInput('title', e)}/>
+                       onChange={(e) => this.updateInput('title', e)}
+                       refe={(input) => { this.nameInput = input }}
+                       autoFocus
+                />
 
                 <Input title="Amount (in PLN):"
                        value={this.state.value}
