@@ -1,26 +1,30 @@
-table {
-  width: 100%;
-  margin-bottom: 20px;
+.expenses {
+  overflow-x: auto;
 
-  tbody {
-    tr {
-      &:nth-child(odd) {
-        background-color: #cbcbcb;
-      }
+  table {
+    width: 100%;
+    margin-bottom: 20px;
 
-      &:first-child {
-        background-color: #ababab;
-      }
+    tbody {
+      tr {
+        &:nth-child(odd) {
+          background-color: #cbcbcb;
+        }
 
-      th, td {
-        padding: 5px;
+        &:first-child {
+          background-color: #ababab;
+        }
 
-        &.delete {
-          cursor: pointer;
-          transition: background-color 250ms;
+        th, td {
+          padding: 5px;
 
-          &:hover {
-            background-color: #ababab;
+          &.delete {
+            cursor: pointer;
+            transition: background-color 250ms;
+
+            &:hover {
+              background-color: #ababab;
+            }
           }
         }
       }

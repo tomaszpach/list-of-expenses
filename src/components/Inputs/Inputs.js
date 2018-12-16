@@ -42,7 +42,9 @@ class Inputs extends Component {
                        type="text" name="title"
                        placeholder="Please type title (minimum 5 characters)"
                        onChange={(e) => this.updateInput('title', e)}
-                       refe={(input) => { this.nameInput = input }}
+                       refe={(input) => {
+                           this.nameInput = input
+                       }}
                        autoFocus
                 />
 

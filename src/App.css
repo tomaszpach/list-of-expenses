@@ -19,6 +19,10 @@ body {
   border-top: none;
   border-bottom: none; }
 
+#root {
+  overflow-y: hidden;
+  padding-bottom: 100px; }
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0; }
 
@@ -75,22 +79,25 @@ form {
     position: absolute;
     bottom: 2em;
     right: 2em;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    max-width: calc(100% - 4em); }
 
-table {
-  width: 100%;
-  margin-bottom: 20px; }
-  table tbody tr:nth-child(odd) {
-    background-color: #cbcbcb; }
-  table tbody tr:first-child {
-    background-color: #ababab; }
-  table tbody tr th, table tbody tr td {
-    padding: 5px; }
-    table tbody tr th.delete, table tbody tr td.delete {
-      cursor: pointer;
-      transition: background-color 250ms; }
-      table tbody tr th.delete:hover, table tbody tr td.delete:hover {
-        background-color: #ababab; }
+.expenses {
+  overflow-x: auto; }
+  .expenses table {
+    width: 100%;
+    margin-bottom: 20px; }
+    .expenses table tbody tr:nth-child(odd) {
+      background-color: #cbcbcb; }
+    .expenses table tbody tr:first-child {
+      background-color: #ababab; }
+    .expenses table tbody tr th, .expenses table tbody tr td {
+      padding: 5px; }
+      .expenses table tbody tr th.delete, .expenses table tbody tr td.delete {
+        cursor: pointer;
+        transition: background-color 250ms; }
+        .expenses table tbody tr th.delete:hover, .expenses table tbody tr td.delete:hover {
+          background-color: #ababab; }
 
 .summary {
   margin-bottom: 20px; }

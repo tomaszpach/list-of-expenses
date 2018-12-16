@@ -18,5 +18,6 @@ form {
     bottom: 2em;
     right: 2em;
     margin-bottom: 0;
+    max-width: calc(100% - 4em);
   }
 }

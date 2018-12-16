@@ -17,17 +17,19 @@ const Table = ({transactions, eurPln, onDelete}) => {
         );
     });
     return (
-        <table>
-            <tbody>
-            <tr>
-                <th>Title</th>
-                <th>Amount(PLN)</th>
-                <th>Amount(EUR)</th>
-                <th>Options</th>
-            </tr>
-            {items}
-            </tbody>
-        </table>
+        <div className="expenses">
+            <table>
+                <tbody>
+                <tr>
+                    <th>Title</th>
+                    <th>Amount(PLN)</th>
+                    <th>Amount(EUR)</th>
+                    <th>Options</th>
+                </tr>
+                {items}
+                </tbody>
+            </table>
+        </div>
     );
 };
 
