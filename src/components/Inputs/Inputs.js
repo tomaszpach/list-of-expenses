@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import Input from './_input';
+import Input from '../../_partials/_input';
+import InputBtn from "../../_partials/_inputBtn";
 
 class Inputs extends Component {
     state = {
@@ -57,7 +58,7 @@ class Inputs extends Component {
                        placeholder="Example: 73.12"
                        onChange={(e) => this.updateInput('value', e)}/>
 
-                <input className="btn" type="submit" value="add expense"/>
+                <InputBtn value="add expense"/>
             </form>
         );
     }

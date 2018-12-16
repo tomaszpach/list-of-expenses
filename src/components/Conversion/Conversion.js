@@ -1,5 +1,6 @@
 import React from 'react';
-import Input from "../Inputs/_input";
+import Input from "../../_partials/_input";
+import InputBtn from "../../_partials/_inputBtn";
 
 const Conversion = ({conversion, onSubmit, onChange}) => {
     return (
@@ -11,7 +12,8 @@ const Conversion = ({conversion, onSubmit, onChange}) => {
                    name="conversion"
                    placeholder="Example: 4.382"
                    onChange={(e) => onChange(e)}/>
-            <input className="btn" type="submit" value="Change conversion"/>
+
+            <InputBtn value="Change conversion"/>
         </form>
     );
 };
