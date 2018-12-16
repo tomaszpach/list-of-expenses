@@ -6,6 +6,7 @@ html {
   background-color: #EEE; }
 
 body {
+  position: relative;
   box-sizing: border-box;
   min-height: 100%;
   margin: 0 auto;
