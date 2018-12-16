@@ -8,7 +8,7 @@ const Summary = ({transactions, eurPln}) => {
 
     const eur = (sum / eurPln).toFixed(2);
     return (
-        <div>Sum: {sum} PLN ({eur} EUR)</div>
+        <div>Sum: {sum.toFixed(2)} PLN ({eur} EUR)</div>
     );
 };
 
