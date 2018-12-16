@@ -74,12 +74,14 @@ form {
     justify-content: space-between;
     margin-bottom: 10px; }
     form label span, form label input {
-      flex: 1; }
+      flex: 1;
+      padding-right: 10px; }
   form.conversion {
     position: absolute;
     bottom: 2em;
     right: 2em;
     margin-bottom: 0;
+    width: 400px;
     max-width: calc(100% - 4em); }
 
 .expenses {
