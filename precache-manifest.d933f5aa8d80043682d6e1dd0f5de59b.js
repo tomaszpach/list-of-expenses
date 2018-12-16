@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "a5f8561e9f9433ea3611",
-    "url": "/list-of-expenses/static/css/main.a94ccb3f.chunk.css"
+    "revision": "8f33e8bf6cda720b7e5e",
+    "url": "/list-of-expenses/static/css/main.a161fdff.chunk.css"
   },
   {
-    "revision": "a5f8561e9f9433ea3611",
-    "url": "/list-of-expenses/static/js/main.a5f8561e.chunk.js"
+    "revision": "8f33e8bf6cda720b7e5e",
+    "url": "/list-of-expenses/static/js/main.8f33e8bf.chunk.js"
   },
   {
     "revision": "7f4b106228a95ecf782a",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/list-of-expenses/static/js/runtime~main.edf32cf1.js"
   },
   {
-    "revision": "bac7372ae8c89a3a2d1823914b6f3c53",
+    "revision": "425569abc27a3487043559d39bb2296f",
     "url": "/list-of-expenses/index.html"
   }
 ];
