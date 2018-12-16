@@ -30,13 +30,21 @@ class Inputs extends Component {
     render() {
         return (
             <form onSubmit={(e) => this.handleSubmit(e)}>
-                <Input title="Title of transaction:" pattern=".{5,50}" inputTitle="Minimum 5 characters"
+                <Input title="Title of transaction:"
+                       pattern=".{5,50}"
+                       inputTitle="Minimum 5 characters"
                        type="text" name="title"
-                       placeholder="Please type title (minimum 5 characters)" onChange={(e) => this.updateInput('title', e)}/>
+                       placeholder="Please type title (minimum 5 characters)"
+                       onChange={(e) => this.updateInput('title', e)}/>
 
-                <Input title="Amount (in PLN):" step=".01" inputTitle="Up to 2 numbers after the decimal"
-                       type="number" name="amount"
-                       placeholder="Type amount" onChange={(e) => this.updateInput('value', e)}/>
+                <Input title="Amount (in PLN):"
+                       step=".01"
+                       inputTitle="Up to 2 numbers after the decimal"
+                       type="number"
+                       name="amount"
+                       placeholder="Type amount"
+                       onChange={(e) => this.updateInput('value', e)}/>
+
                 <input className="btn" type="submit" value="add expense"/>
             </form>
         );
