@@ -3,7 +3,7 @@ import Input from "../Inputs/_input";
 
 const Conversion = ({conversion, onSubmit, onChange}) => {
     return (
-        <form onSubmit={(e) => onSubmit(e)}>
+        <form className="conversion" onSubmit={(e) => onSubmit(e)}>
             <Input title="Type new conversion:"
                    step=".001"
                    required
