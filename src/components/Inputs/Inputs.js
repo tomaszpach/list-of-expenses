@@ -37,23 +37,11 @@ class Inputs extends Component {
                 <Input title="Amount (in PLN):" step=".01" inputTitle="Up to 2 numbers after the decimal"
                        type="number" name="amount"
                        placeholder="Type amount" onChange={(e) => this.updateInput('value', e)}/>
-
-                {/*<label>*/}
-                    {/*/!* Block at most two digits after the decimal *!/*/}
-                    {/*<span>Amount (in PLN):</span>*/}
-                    {/*<input step=".01" type="number" name="amount" placeholder="up to 2 numbers after the decimal"*/}
-                           {/*onChange={(e) => this.updateInput('value', e)}/>*/}
-                {/*</label>*/}
-
                 <input type="submit" value="Add"/>
             </form>
         );
     }
 }
-
-const mapStateToProps = (reducerState) => {
-    return {}
-};
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -63,4 +51,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Inputs);
+export default connect(null, mapDispatchToProps)(Inputs);
