@@ -3,7 +3,7 @@ import React from 'react';
 const Table = ({transactions, eurPln, onDelete}) => {
     const items = transactions.map((item, index) => {
         const title = item.title,
-            value = item.value,
+            value = (item.value).toFixed(2),
             eur = (item.value / eurPln).toFixed(2),
             id = item.id;
 
