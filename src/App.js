@@ -31,10 +31,15 @@ class App extends Component {
         const {title, eurPln, transactions} = this.props;
         return (
             <div className="App">
-                <Header title={title} eurPln={eurPln} />
-                <Inputs />
+                <Header title={title} eurPln={eurPln}/>
+                <Inputs/>
                 <Table onDelete={(id) => this.props.deleteExpense(id)} transactions={transactions} eurPln={eurPln}/>
-                <Summary transactions={transactions} eurPln={eurPln}/>
+
+                {transactions.length > 0 ?
+                    <Summary transactions={transactions} eurPln={eurPln}/> :
+                    <h2>Add some expenses to see summary</h2>
+                }
+
                 <Conversion onChange={(e) => this.updateInput(e)} onSubmit={(ref) => this.updateCurrency(ref)}/>
             </div>
         );
