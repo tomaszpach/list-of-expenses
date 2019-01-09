@@ -1,25 +1,29 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { observable, action } from 'mobx';
+import { observer } from 'mobx-react';
 
+class HelloData {
+    @observable clickedCount = 0;
 
-class Hello extends React.Component<{}, { clickedCount: number }> {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            clickedCount: 0
-        }
-    }
-
+    @action
     increment() {
-        this.setState({
-            clickedCount: this.state.clickedCount + 1
-        })
+        this.clickedCount++;
+        console.log(this)
     }
+}
+
+@observer
+class Hello extends React.Component<{}> {
+    data = new HelloData();
 
     render() {
+        console.log(this.data);
+
         return(
-            <div>test 2</div>
+            <button onClick={() => this.data.increment()}>
+            Click count = {this.data.clickedCount}
+            </button>
         )
     }
 }
