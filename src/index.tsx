@@ -9,7 +9,6 @@ class HelloData {
     @action
     increment() {
         this.clickedCount++;
-        console.log(this)
     }
 }
 
@@ -18,8 +17,6 @@ class Hello extends React.Component<{}> {
     data = new HelloData();
 
     render() {
-        console.log(this.data);
-
         return(
             <button onClick={() => this.data.increment()}>
             Click count = {this.data.clickedCount}
