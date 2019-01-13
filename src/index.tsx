@@ -14,11 +14,6 @@ class HelloData {
     @observable amount:number = 0;
 
     @action
-    increment() {
-        this.clickedCount++;
-    }
-
-    @action
     updateInput(e, inputType:string) {
         const value = e.target.value;
         inputType === 'title' ? this.titleInput = value : this.amountInput = parseFloat(value);
@@ -72,18 +67,15 @@ class Hello extends React.Component<{}> {
                     <div>Snacks for footbal match</div>
                     <div>Bus ticket</div>
                     {this.data.itemList.map((item, index) => (
-                        <div key={index}>{item.name}, amount: {item.amount}</div>
+                        <div key={index}>
+                        {item.name}, amount: {item.amount}
+                        </div>
                     ))}
                 </div>
 
                 <div className="summary">
                     <h4>Sum: {this.data.summaryPln} PLN ({this.data.summaryEur} EUR)</h4>
                 </div>
-
-
-                <button onClick={() => this.data.increment()}>
-                    Click count = {this.data.clickedCount}
-                </button>
             </div>
         )
     }
