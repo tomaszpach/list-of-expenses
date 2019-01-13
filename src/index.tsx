@@ -5,9 +5,11 @@ import { observer } from 'mobx-react';
 
 class HelloData {
     @observable clickedCount:number = 0;
-    @observable titleInput:string = '';
-    @observable amountInput:number = 0;
-    @observable itemList:Array<{name:string, amount:number}> = [{name: 'example', amount: 20}];
+    @observable titleInput:string = 'test';
+    @observable amountInput:number = 20;
+    @observable summaryPln:number = 0;
+    @observable summaryEur:number = 0;
+    @observable itemList:Array<{name:string, amount:number}> = [];
 
     @observable amount:number = 0;
 
@@ -19,7 +21,15 @@ class HelloData {
     @action
     updateInput(e, inputType:string) {
         const value = e.target.value;
-        inputType === 'title' ? this.titleInput = value : this.amountInput = value;
+        inputType === 'title' ? this.titleInput = value : this.amountInput = parseFloat(value);
+    }
+
+    @action
+    updateSummary() {
+        console.log('this.amountInput', this.amountInput)
+        console.log(typeof this.amountInput);
+        this.summaryPln = this.summaryPln + this.amountInput;
+        this.summaryEur = parseFloat((this.summaryPln / 4.382).toFixed(2));
     }
 }
 
@@ -29,6 +39,9 @@ class Hello extends React.Component<{}> {
 
     formSubmit(e) {
         e.preventDefault();
+
+        this.data.updateSummary();
+
         const name = this.data.titleInput;
         const amount = this.data.amountInput;
         console.log('submitted');
@@ -49,7 +62,7 @@ class Hello extends React.Component<{}> {
 
                     <label>
                         Amount (in PLN):
-                    <input type="text" name="name" value={this.data.amountInput} onChange={(e) => this.data.updateInput(e, 'amount')} />
+                    <input type="number" name="name" value={this.data.amountInput} onChange={(e) => this.data.updateInput(e, 'amount')} />
                     </label>
                     <input type="submit" value="Add" onClick={(e) => this.formSubmit(e)} />
                 </form>
@@ -58,13 +71,13 @@ class Hello extends React.Component<{}> {
                     <div>New book about Rust</div>
                     <div>Snacks for footbal match</div>
                     <div>Bus ticket</div>
-                    {this.data.itemList.map(item => {
-                        return item.name;
-                    })}
+                    {this.data.itemList.map((item, index) => (
+                        <div key={index}>{item.name}, amount: {item.amount}</div>
+                    ))}
                 </div>
 
                 <div className="summary">
-                    <h4>Sum: 122.55 PLN (27,96 EUR)</h4>
+                    <h4>Sum: {this.data.summaryPln} PLN ({this.data.summaryEur} EUR)</h4>
                 </div>
 
 
