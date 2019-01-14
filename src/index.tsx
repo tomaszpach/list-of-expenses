@@ -4,14 +4,14 @@ import { observable, action, computed } from 'mobx';
 import { observer } from 'mobx-react';
 
 // todo przygotuj opcję usuwania
+// todo dodaj konwersję dla Euro
 class MobX {
     @observable titleInput:string = 'Example';
     @observable amountInput:number = 20;
     @observable summaryPln:number = 0;
     
     @observable amount:number = 0;
-    // todo dodaj do tablicy losowo generowane ID
-    @observable itemList:Array<{name:string, amount:number}> = [];
+    @observable itemList:Array<{name:string, amount:number, id:number}> = [];
 
     @action
     updateTitleInput = e => {
@@ -50,8 +50,9 @@ class Expenses extends React.Component<{}> {
 
         const name = this.data.titleInput;
         const amount = this.data.amountInput;
+        const id = Date.now();
         
-        this.data.itemList.push({name, amount})
+        this.data.itemList.push({name, amount, id})
     }
 
     render() {
