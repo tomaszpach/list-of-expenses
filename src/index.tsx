@@ -1,47 +1,57 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
 import { observer } from 'mobx-react';
 
-class HelloData {
-    @observable clickedCount:number = 0;
-    @observable titleInput:string = 'test';
+// todo przygotuj opcję usuwania
+class MobX {
+    @observable titleInput:string = 'Example';
     @observable amountInput:number = 20;
     @observable summaryPln:number = 0;
-    @observable summaryEur:number = 0;
+    
+    @observable amount:number = 0;
+    // todo dodaj do tablicy losowo generowane ID
     @observable itemList:Array<{name:string, amount:number}> = [];
 
-    @observable amount:number = 0;
-
     @action
-    updateInput(e, inputType:string) {
-        const value = e.target.value;
-        inputType === 'title' ? this.titleInput = value : this.amountInput = parseFloat(value);
+    updateTitleInput = e => {
+        this.titleInput = e.target.value;
     }
 
     @action
-    updateSummary() {
-        console.log('this.amountInput', this.amountInput)
-        console.log(typeof this.amountInput);
+    updateAmountInput = e => {
+        this.amountInput = parseFloat(e.target.value);
+    }
+
+    @action 
+    updateSummaryPln() {
         this.summaryPln = this.summaryPln + this.amountInput;
-        this.summaryEur = parseFloat((this.summaryPln / 4.382).toFixed(2));
+    }
+
+    // Get Summary Euro
+    @computed get summaryEur() {
+        return parseFloat((this.summaryPln / 4.382).toFixed(2));
+    }
+
+    // Get items list amount
+    @computed get amountC() {
+        return this.amount = this.itemList.length;
     }
 }
 
 @observer
-class Hello extends React.Component<{}> {
-    data = new HelloData();
+class Expenses extends React.Component<{}> {
+    data = new MobX();
+
 
     formSubmit(e) {
         e.preventDefault();
-
-        this.data.updateSummary();
+        this.data.updateSummaryPln();
 
         const name = this.data.titleInput;
         const amount = this.data.amountInput;
-        console.log('submitted');
+        
         this.data.itemList.push({name, amount})
-        console.log(this.data.itemList.map(x => x))
     }
 
     render() {
@@ -52,33 +62,32 @@ class Hello extends React.Component<{}> {
                 <form>
                     <label>
                         Title of transaction:
-                    <input type="text" name="titleInput" value={this.data.titleInput} onChange={(e) => this.data.updateInput(e, 'title')} />
+                    <input type="text" name="titleInput" value={this.data.titleInput} onChange={this.data.updateTitleInput} />
                     </label>
 
                     <label>
                         Amount (in PLN):
-                    <input type="number" name="name" value={this.data.amountInput} onChange={(e) => this.data.updateInput(e, 'amount')} />
+                    <input type="number" name="amountInput" value={this.data.amountInput} onChange={this.data.updateAmountInput} />
                     </label>
                     <input type="submit" value="Add" onClick={(e) => this.formSubmit(e)} />
                 </form>
 
-                <div className="table">
-                    <div>New book about Rust</div>
-                    <div>Snacks for footbal match</div>
-                    <div>Bus ticket</div>
-                    {this.data.itemList.map((item, index) => (
-                        <div key={index}>
-                        {item.name}, amount: {item.amount}
-                        </div>
-                    ))}
-                </div>
+                {this.data.amountC > 0 ? (
+                    <div className="table">
+                        {this.data.itemList.map((item, index) => (
+                            <div key={index}>
+                            {item.name}, amount: {item.amount}
+                            </div>
+                        ))}
+                    </div>
+                ) : null}
 
                 <div className="summary">
-                    <h4>Sum: {this.data.summaryPln} PLN ({this.data.summaryEur} EUR)</h4>
+                    <h4>Sum: {this.data.summaryPln} PLN ({this.data.summaryEur} EUR), amount: {this.data.amountC}</h4>
                 </div>
             </div>
         )
     }
 }
 
-ReactDOM.render(<Hello />, document.getElementById('root'))
+ReactDOM.render(<Expenses />, document.getElementById('root'))
