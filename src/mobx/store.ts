@@ -6,7 +6,6 @@ export default class ExpensesMobX {
     @observable amountInput:number = 20;
     @observable conversion:number = 4.382;
 
-    @observable amount:number = 0;
     @observable itemList:Array<{name:string, amount:number, id:number}> = [];
 
     @action
@@ -37,13 +36,12 @@ export default class ExpensesMobX {
         return summaryPln;
     };
 
-    // Get Summary Euro
     @computed get summaryEur() {
         return parseFloat((this.summaryPln / this.conversion).toFixed(2));
     }
 
     // Get items list amount
-    @computed get amountC() {
-        return this.amount = this.itemList.length;
+    @computed get amount() {
+        return this.itemList.length;
     }
 }

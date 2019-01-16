@@ -36,7 +36,7 @@ class Expenses extends React.Component<{}> {
                     <input type="submit" value="Add" onClick={(e) => this.formSubmit(e)} />
                 </form>
 
-                {this.expenses.amountC > 0 ? (
+                {this.expenses.amount > 0 ? (
                     <div className="table">
                         {this.expenses.itemList.map((item, index) => (
                             <div onDoubleClick={() => this.expenses.deleteItem(item.id)}
@@ -49,7 +49,7 @@ class Expenses extends React.Component<{}> {
                 ) : null}
 
                 <div className="summary">
-                    <h4>Sum: {this.expenses.summaryPln} PLN ({this.expenses.summaryEur} EUR), amount: {this.expenses.amountC}</h4>
+                    <h4>Sum: {this.expenses.summaryPln} PLN ({this.expenses.summaryEur} EUR), amount: {this.expenses.amount}</h4>
                 </div>
             </div>
         )
