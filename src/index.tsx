@@ -5,7 +5,7 @@ import { observer } from 'mobx-react';
 
 // todo przygotuj opcję usuwania
 // todo dodaj konwersję dla Euro
-class MobX {
+class ExpensesMobX {
     @observable titleInput:string = 'Example';
     @observable amountInput:number = 20;
     @observable summaryPln:number = 0;
@@ -16,17 +16,24 @@ class MobX {
     @action
     updateTitleInput = e => {
         this.titleInput = e.target.value;
-    }
+    };
 
     @action
     updateAmountInput = e => {
         this.amountInput = parseFloat(e.target.value);
+    };
+
+    @action
+    deleteItem(id) {
+        this.itemList = this.itemList.filter(item => {
+            return item.id !== id;
+        })
     }
 
     @action 
     updateSummaryPln() {
         this.summaryPln = this.summaryPln + this.amountInput;
-    }
+    };
 
     // Get Summary Euro
     @computed get summaryEur() {
@@ -41,18 +48,18 @@ class MobX {
 
 @observer
 class Expenses extends React.Component<{}> {
-    data = new MobX();
+    expenses = new ExpensesMobX();
 
 
     formSubmit(e) {
         e.preventDefault();
-        this.data.updateSummaryPln();
+        this.expenses.updateSummaryPln();
 
-        const name = this.data.titleInput;
-        const amount = this.data.amountInput;
+        const name = this.expenses.titleInput;
+        const amount = this.expenses.amountInput;
         const id = Date.now();
         
-        this.data.itemList.push({name, amount, id})
+        this.expenses.itemList.push({name, amount, id})
     }
 
     render() {
@@ -63,28 +70,29 @@ class Expenses extends React.Component<{}> {
                 <form>
                     <label>
                         Title of transaction:
-                    <input type="text" name="titleInput" value={this.data.titleInput} onChange={this.data.updateTitleInput} />
+                    <input type="text" name="titleInput" value={this.expenses.titleInput} onChange={this.expenses.updateTitleInput} />
                     </label>
 
                     <label>
                         Amount (in PLN):
-                    <input type="number" name="amountInput" value={this.data.amountInput} onChange={this.data.updateAmountInput} />
+                    <input type="number" name="amountInput" value={this.expenses.amountInput} onChange={this.expenses.updateAmountInput} />
                     </label>
                     <input type="submit" value="Add" onClick={(e) => this.formSubmit(e)} />
                 </form>
 
-                {this.data.amountC > 0 ? (
+                {this.expenses.amountC > 0 ? (
                     <div className="table">
-                        {this.data.itemList.map((item, index) => (
-                            <div key={index}>
-                            {item.name}, amount: {item.amount}
+                        {this.expenses.itemList.map((item, index) => (
+                            <div onClick={() => this.expenses.deleteItem(item.id)}
+                                key={index}>
+                                {item.name}, amount: {item.amount}
                             </div>
                         ))}
                     </div>
                 ) : null}
 
                 <div className="summary">
-                    <h4>Sum: {this.data.summaryPln} PLN ({this.data.summaryEur} EUR), amount: {this.data.amountC}</h4>
+                    <h4>Sum: {this.expenses.summaryPln} PLN ({this.expenses.summaryEur} EUR), amount: {this.expenses.amountC}</h4>
                 </div>
             </div>
         )
