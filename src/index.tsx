@@ -1,45 +1,24 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { observer } from 'mobx-react';
-import ExpensesMobX from './mobx/store';
+import expenses from './mobx/store';
+
+import Form from './components/form';
 
 
 @observer
 class Expenses extends React.Component<{}> {
-    expenses = new ExpensesMobX();
-
-    formSubmit(e) {
-        e.preventDefault();
-
-        const name = this.expenses.titleInput;
-        const amount = this.expenses.amountInput;
-        const id = Date.now();
-        
-        this.expenses.itemList.push({name, amount, id});
-    }
-
     render() {
         return (
             <div className="app-wrapper">
                 <h2>List of expenses</h2>
 
-                <form>
-                    <label>
-                        Title of transaction:
-                    <input type="text" name="titleInput" value={this.expenses.titleInput} onChange={this.expenses.updateTitleInput} />
-                    </label>
+                <Form expenses={expenses}/>
 
-                    <label>
-                        Amount (in PLN):
-                    <input type="number" name="amountInput" value={this.expenses.amountInput} onChange={this.expenses.updateAmountInput} />
-                    </label>
-                    <input type="submit" value="Add" onClick={(e) => this.formSubmit(e)} />
-                </form>
-
-                {this.expenses.amount > 0 ? (
+                {expenses.amount > 0 ? (
                     <div className="table">
-                        {this.expenses.itemList.map((item, index) => (
-                            <div onDoubleClick={() => this.expenses.deleteItem(item.id)}
+                        {expenses.itemList.map((item, index) => (
+                            <div onDoubleClick={() => expenses.deleteItem(item.id)}
                                 key={index}>
                                 {item.name}, amount: {item.amount}
                             </div>
@@ -49,7 +28,7 @@ class Expenses extends React.Component<{}> {
                 ) : null}
 
                 <div className="summary">
-                    <h4>Sum: {this.expenses.summaryPln} PLN ({this.expenses.summaryEur} EUR), amount: {this.expenses.amount}</h4>
+                    <h4>Sum: {expenses.summaryPln} PLN ({expenses.summaryEur} EUR), amount: {expenses.amount}</h4>
                 </div>
             </div>
         )

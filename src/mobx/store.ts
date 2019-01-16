@@ -1,7 +1,6 @@
 import {action, computed, observable} from "mobx";
 
-// todo dodaj konwersję dla Euro
-export default class ExpensesMobX {
+class ExpensesMobX {
     @observable titleInput:string = 'Example';
     @observable amountInput:number = 20;
     @observable conversion:number = 4.382;
@@ -40,8 +39,11 @@ export default class ExpensesMobX {
         return parseFloat((this.summaryPln / this.conversion).toFixed(2));
     }
 
-    // Get items list amount
     @computed get amount() {
         return this.itemList.length;
     }
 }
+
+let expenses = new ExpensesMobX();
+
+export default expenses;
