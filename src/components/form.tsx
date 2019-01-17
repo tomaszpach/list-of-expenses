@@ -1,10 +1,13 @@
 import * as React from 'react';
-import expenses from '../mobx/store';
+import { observer } from "mobx-react";
+import { AppStateComponent } from "../Context";
 
-class Form extends React.Component<{expenses}> {
+@observer
+class Form extends AppStateComponent {
     formSubmit = e => {
         e.preventDefault();
 
+        const expenses = this.appState;
         const name = expenses.titleInput;
         const amount = expenses.amountInput;
         const id = Date.now();
@@ -13,6 +16,7 @@ class Form extends React.Component<{expenses}> {
     };
 
     render() {
+        const expenses = this.appState;
         return (
             <div className="app-wrapper">
                 <form onSubmit={(e) => this.formSubmit(e)}>

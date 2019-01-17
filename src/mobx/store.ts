@@ -1,6 +1,6 @@
 import {action, computed, observable} from "mobx";
 
-class ExpensesMobX {
+export class ExpensesMobX {
     @observable titleInput:string = 'Example';
     @observable amountInput:number = 20;
     @observable conversion:number = 4.382;
@@ -43,7 +43,3 @@ class ExpensesMobX {
         return this.itemList.length;
     }
 }
-
-let expenses = new ExpensesMobX();
-
-export default expenses;

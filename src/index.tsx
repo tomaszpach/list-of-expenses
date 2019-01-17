@@ -1,19 +1,24 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { observer } from 'mobx-react';
-import expenses from './mobx/store';
+import { ExpensesMobX } from "./mobx/store";
 
 import Form from './components/form';
+import { AppStateComponent, Provider } from "./Context";
 
 
+// todo add emotion.js
 @observer
-class Expenses extends React.Component<{}> {
+class Expenses extends AppStateComponent {
     render() {
+      const expenses = this.appState;
+
+
         return (
             <div className="app-wrapper">
                 <h2>List of expenses</h2>
 
-                <Form expenses={expenses}/>
+                <Form />
 
                 {expenses.amount > 0 ? (
                     <div className="table">
@@ -35,4 +40,10 @@ class Expenses extends React.Component<{}> {
     }
 }
 
-ReactDOM.render(<Expenses />, document.getElementById('root'));
+const store = new ExpensesMobX();
+
+ReactDOM.render(
+  <Provider value={store}>
+    <Expenses />
+  </Provider>
+, document.getElementById('root'));
